@@ -93,12 +93,15 @@
 .nav-item:nth-child(4) {
   transition-delay: 0.4s; }
 
+* {
+  box-sizing: border-box; }
+
 body {
   background: #444;
   color: #fff;
   height: 100%;
   margin: 0;
-  font-family: "Roboto";
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5; }
   body#bg-img {
     background: url(../img/background.jpg);
@@ -114,18 +117,24 @@ body {
       z-index: -1;
       background: rgba(68, 68, 68, 0.9); }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   font-weight: 400; }
-  h1.lg-heading, h2.lg-heading, h3.lg-heading {
+  h1.lg-heading,
+  h2.lg-heading,
+  h3.lg-heading {
     font-size: 6rem; }
-  h1.sm-heading, h2.sm-heading, h3.sm-heading {
+  h1.sm-heading,
+  h2.sm-heading,
+  h3.sm-heading {
     margin-bottom: 2rem;
-    padding: 0.2 rem 1rem;
+    padding: 0.2rem 1rem;
     background: rgba(73, 73, 73, 0.5); }
 
 a {
-  color: white;
+  color: #fff;
   text-decoration: none; }
 
 header {
@@ -137,15 +146,13 @@ header {
   color: #00b7ff; }
 
 main {
-  padding: 4rem; }
-  main min-height:calc(100vh -60px)
-.icons {
+  padding: 4rem;
+  min-height: calc(100vh - 60px); }
+  main .icons {
     margin-top: 1rem; }
-    main min-height:calc(100vh -60px)
-.icons a {
+    main .icons a {
       padding: 0.4rem; }
-      main min-height:calc(100vh -60px)
-.icons a:hover {
+      main .icons a:hover {
         color: #00b7ff;
         transition: all 0.5s ease-out; }
   main#home {
@@ -156,39 +163,89 @@ main {
 .about-info {
   display: grid;
   grid-gap: 30px;
-  grid-template-areas: "bioimage bio bio" "job1 job2 job3";
+  grid-template-areas: 'bioimage bio bio' 'job1 job2 job3';
   grid-template-columns: repeat(3, 1fr); }
+  .about-info .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: #00b7ff 3px solid; }
+  .about-info .bio {
+    grid-area: bio;
+    font-size: 1.5rem; }
+  .about-info .job-1 {
+    grid-area: job1; }
+  .about-info .job-2 {
+    grid-area: job2; }
+  .about-info .job-3 {
+    grid-area: job3; }
+  .about-info .job {
+    background: #515151;
+    padding: 0.5rem;
+    border-bottom: #00b7ff 5px solid; }
 
-.bio-image {
-  grid-area: bioimage;
-  margin: auto;
-  border-radius: 50%;
-  border: #00b7ff 3px solid; }
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr); }
+  .projects img {
+    width: 100%;
+    border: 3px #fff solid; }
+    .projects img:hover {
+      opacity: 0.5;
+      border-color: #00b7ff;
+      transition: all 0.5s ease-out; }
 
-.bio {
-  grid-area: bio;
-  font-size: 1.5rem; }
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem; }
+  .boxes div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    transition: all 0.5s ease-out; }
+    .boxes div:hover {
+      padding: 0.5rem 1.5rem;
+      background: #00b7ff;
+      color: #000; }
+      .boxes div:hover span {
+        color: #000; }
 
-.job-1 {
-  grid-area: job1; }
+.btn, .btn-dark, .btn-light {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem; }
+  .btn:hover, .btn-dark:hover, .btn-light:hover {
+    background: #00b7ff;
+    color: #000; }
 
-.job-2 {
-  grid-area: job2; }
+.btn-dark {
+  background: black;
+  color: #fff; }
 
-.job-3 {
-  grid-area: job3; }
-
-.job {
-  background: #515151;
-  padding: 0.5rem;
-  border-bottom: #00b7ff 5px solid; }
+.btn-light {
+  background: #c4c4c4;
+  color: #333; }
 
 #main-footer {
   text-align: center;
   padding: 1rem;
-  background-color: #2b2b2b;
+  background: #2b2b2b;
   color: #fff;
   height: 60px; }
+
+@media screen and (min-width: 1171px) {
+  .projects {
+    grid-template-columns: repeat(4, 1fr); } }
+
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr); } }
 
 @media screen and (max-width: 768px) {
   main {
@@ -212,8 +269,12 @@ main {
     transform: translate3d(100%, 0, 0); }
   .about-info {
     grid-template-areas: "bioimage" "bio" "job1" "job2" "job3";
-    grid-template-columns: 1fr; } }
+    grid-template-columns: 1fr; }
+  .projects {
+    grid-template-columns: repeat(2, 1fr); } }
 
 @media screen and (max-width: 500px) {
   main#home h1 {
-    margin-top: 10vh; } }
+    margin-top: 10vh; }
+  .projects {
+    grid-template-columns: 1fr; } }
